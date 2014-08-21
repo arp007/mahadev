@@ -45,6 +45,13 @@ indexes:
 
 - kind: mahadev_series
   properties:
+  - name: date
+    direction: desc
+  - name: __key__
+    direction: desc
+
+- kind: mahadev_series
+  properties:
   - name: episode_id
   - name: seq_num
 
