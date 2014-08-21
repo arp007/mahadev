@@ -6,11 +6,19 @@
     xml:lang="{% firstof LANGUAGE_CODE 'en' %}"
     lang="{% firstof LANGUAGE_CODE 'en' %}">
   <head>
-    <title>{% block title %}{% endblock %} - Nonrel-testapp</title>
+    <title>{% block title %}{% endblock %}</title>
 
     {% block css %}
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+     <link href="/static/mahadev/video-js.css" rel="stylesheet" type="text/css">
     {% endblock %}
-
+    {% block load_js %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    {% endblock %}
     {% block preload_js %}
     {% endblock %}
 
@@ -18,36 +26,6 @@
   </head>
 
   <body>
-    <div id="header">
-      <a id="logo" href="/">Nonrel-testapp</a>
-    </div>
-
-    <div class="columns">
-      <div id="content" class="column">
-        {% block content-header %}
-          {% if error %}<div class="error">{{ error }}</div>{% endif %}
-          {% if info %}<div class="info">{{ info }}</div>{% endif %}
-          {% if messages %}
-            {% for message in messages %}
-              <div class="info">{{ message }}</div>
-            {% endfor %}
-          {% endif %}
-        {% endblock %}
-
-        {% block content %}{% endblock %}
-      </div>
-
-      <div id="sidebar" class="column">
-        {% block sidebar %}
-        {% endblock %}
-      </div>
-    </div>
-
-    <div id="footer">
-      <p>Powered by <a href="https://github.com/django-nonrel">Django-nonrel</a></p>
-    </div>
-
-    {% block js %}
-    {% endblock %}
+    {% block body %}{% endblock %}
   </body>
 </html>

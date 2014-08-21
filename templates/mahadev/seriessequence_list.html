@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}series list !{% endblock %}
+{% block preload_js %}
+  <script>
+      $(function() {
+        $( "#sortable" ).sortable();
+        $( "#sortable" ).disableSelection();
+      });
+  </script>
+  <script src="/static/mahadev/video.js"></script>
+
+  <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+  <script>
+    videojs.options.flash.swf = "/static/mahadev/video-js.swf";
+  </script>
+{% endblock %}
+{% block body %}
+<div>
+  <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
+        poster=""
+        data-setup="{}">
+        <source src="http://cdn.playwire.com/12891/video-20140606-940273.mp4" type='video/mp4' />
+  </video>
+  <div class="bs-example">
+      <div class="container">
+        <ul id="sortable" class="list-group">
+              {% for article in seq %}
+                  <li id={{ article.seq_num }} class="list-group-item seqNum">
+                          <img src="{{ article.thumbnail_url }}" alt="{{ article.seq_num }}">
+                          <div class="caption">
+                            <h5>Sequence Number</h5>
+                            <p>{{ article.seq_num }}</p>
+                          </div>
+                  </li> 
+              {% endfor %} 
+        </ul>
+      </div>
+  </div>
+</div>
+<script src="/static/mahadev/playvideo.js"></script>
+{% endblock %}

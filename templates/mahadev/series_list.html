@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Hello Hello !{% endblock %}
+{% block preload_js %}
+    <script>
+        $(function() {
+          $( ".draggable" ).draggable();
+        });
+  </script>
+{% endblock %}
+{% block body %}
+<div class="bs-example">
+   <div class="container">
+        <div class="row">
+            {% for article in object_list %}
+                <div class="col-xs-2 draggable">
+                    <div class="thumbnail" onclick="location.href='{{article.id}}';">
+                        <img src="{{ article.thumbnail_url }}" alt="{{ article.date }}">
+                        <div class="caption">
+                            <h4>{{ article.date }}</h4>
+                       
+                        </div>
+                    </div>
+                </div>
+             {% endfor %}
+        </div>
+      </div>
+   </div>
+{% endblock %}
+

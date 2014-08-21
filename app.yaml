@@ -6,7 +6,7 @@
 # TODO: Enter your application id below. If you have signed up
 # using cloud.google.com/console use the "project id" for your application
 # id.
-application: your-application-id-here
+application: watch-navaraj
 version: 1
 runtime: python27
 api_version: 1
@@ -51,6 +51,8 @@ handlers:
   script: djangoappengine.deferred.handler.application
   login: admin
 
+
+
 # This handler routes requests for application statistics.
 # See https://developers.google.com/appengine/docs/python/tools/appstats
 - url: /_ah/stats/.*
@@ -64,6 +66,10 @@ handlers:
   static_dir: django/contrib/admin/static/admin
   expiration: '0'
 
+- url: /static/
+  static_dir: static/
+
 # This handler catches all requests that don't match a previous handler.
 - url: /.*
   script: djangoappengine.main.application
+
