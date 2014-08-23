@@ -48,6 +48,7 @@ def removePosStr(date):
     dig = dt[0].replace("th","")
     dig = dig.replace("st","")
     dig = dig.replace("rd","")
+    dig = dig.replace("nd", "")
     str_date = "{} {} {}".format(dig,dt[1], '2014')
     return str_date
    
